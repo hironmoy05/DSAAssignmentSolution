@@ -185,7 +185,20 @@ public class Conditionals {
         return p - s;
     }
 
+    // Input a number and print all the factors of that number (use loops).
+    public static void printFactors(int n) {
+        if (n == 2) {
+            System.out.println(n);
+            return;
+        }
+
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0)
+                System.out.print(i + " ");
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(productAndSum(234));
+        printFactors(10);
     }
 }
