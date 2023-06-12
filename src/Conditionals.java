@@ -233,7 +233,29 @@ public class Conditionals {
         System.out.println(largestNumber);
     }
 
+    // Intermediate
+    // Factorial Program
+    private static void factorial(int n) {
+        if (n < 0)
+            return;
+
+        int result = 1;
+
+        for (int i = 2; i <= n; i++)
+                result *= i;
+
+        System.out.println(result);
+    }
+
+//    Calculate Electricity Bill
+    public static void electricBill(float unit, float rs) {
+        if (unit <= 0 || rs <= 0)
+            return;
+
+        System.out.println(unit * rs);
+    }
+
     public static void main(String[] args) {
-        largestNum();
+        electricBill(2, 7.21F);
     }
 }
