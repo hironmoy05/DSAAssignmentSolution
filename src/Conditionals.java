@@ -215,7 +215,25 @@ public class Conditionals {
         System.out.println(sum);
     }
 
+    // Take integer inputs till the user enters 0 and print the largest number from all.
+    public static void largestNum() {
+        Scanner scanner = new Scanner(System.in);
+        int largestNumber = Integer.MIN_VALUE;
+
+        while(true) {
+            int n = scanner.nextInt();
+
+            if (n == 0)
+                break;
+
+            if (n > largestNumber)
+                largestNumber = n;
+        }
+
+        System.out.println(largestNumber);
+    }
+
     public static void main(String[] args) {
-        printSum();
+        largestNum();
     }
 }
