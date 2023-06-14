@@ -111,8 +111,37 @@ public class Main {
         return isPalindrome3(str, s + 1, ed - 1);
     }
 
+
+//    Find Ncr & Npr
+public static long calculateCombination(int n, int r) {
+    long numerator = factorial(n);
+    long denominator = factorial(r) * factorial(n - r);
+    return numerator / denominator;
+}
+
+    public static long calculatePermutation(int n, int r) {
+        long numerator = factorial(n);
+        long denominator = factorial(n - r);
+        return numerator / denominator;
+    }
+
+    public static long factorial(int n) {
+        long result = 1;
+        for (int i = 1; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
+
     public static void main(String[] args) {
-        String str = "madam";
-        System.out.println(isPalindrome3(str, 0, str.length() - 1));
+        int n = 5;
+        int r = 2;
+
+        long combination = calculateCombination(n, r);
+        System.out.println(combination); // Output: 10
+
+        long permutation = calculatePermutation(n, r);
+        System.out.println(permutation); // Output: 20
     }
 }
