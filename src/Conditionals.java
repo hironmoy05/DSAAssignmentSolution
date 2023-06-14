@@ -255,7 +255,88 @@ public class Conditionals {
         System.out.println(unit * rs);
     }
 
-    public static void main(String[] args) {
-        electricBill(2, 7.21F);
+//    Calculate Discount Of Product
+    public static void calculateDiscount(double price) {
+        double discount = price * .08;
+        double discountedPrice = price - (price * .08);
+
+        System.out.println("Total Discount " + discount);
+        System.out.println("Discounted Price " + discountedPrice);
     }
+
+//    Calculate Commission Percentage
+    public static void calculateCommissionPercentage(double totalAmount, double commissionAmount) {
+        double commissionPercentage = (commissionAmount / totalAmount) * 100;
+
+        System.out.println("Commission percentage " + String.format("%.2f", commissionPercentage) + "%");
+    }
+
+//    calculate power
+    public static void power(int num, int p) {
+        System.out.println(Math.pow(num, p));
+    }
+
+//    Calculate Depreciation of Value
+    public static void calculateDepreciationValue(double initialPrice, double salvageValue, int usefulLifeYears) {
+        double depreciationValue = (initialPrice - salvageValue) / usefulLifeYears;
+
+        System.out.println("Depreciation value per year: " + depreciationValue);
+    }
+
+//    Calculate Batting Average
+    public static void calculateBattingAverage(int totalRunsScored, int numberOfDismissals) {
+        double battingAverage = (double)totalRunsScored / numberOfDismissals;
+
+        System.out.println("Batting Average: " + battingAverage);
+    }
+
+    //    Calculate CGPA
+    public static void calculateCGPA() {
+        int creditHours1 = 3;
+        int creditHours2 = 4;
+        int creditHours3 = 3;
+        int creditHours4 = 2;
+        float course1GradePoints = 4.0F * creditHours1;
+        float course2GradePoints = 3.0F * creditHours2;
+        float course3GradePoints = 4.0F * creditHours3;
+        float course4GradePoints = 2.0F * creditHours4;
+
+        float totalGradePoints = course1GradePoints + course2GradePoints + course3GradePoints + course4GradePoints;
+        int totalCreditHours = creditHours1 + creditHours2 + creditHours3 + creditHours4;
+
+        double cgpa = (double)totalGradePoints / totalCreditHours;
+
+        System.out.println("CGPA: " + String.format("%.2f", cgpa));
+    }
+
+    // Calculate compound Interest
+    public static void calculateCompoundInterest(
+            int principal,
+            double annualInterestRate,
+            int periodsPerYear,
+            int numberOfYears) {
+
+        double totalAmountAOfCompoundInterest = principal * Math.pow(1 + annualInterestRate / periodsPerYear, periodsPerYear * numberOfYears);
+
+        System.out.println("Total amount of compound interest "+ String.format("%.2f", totalAmountAOfCompoundInterest));
+    }
+
+//    Calculate Average Marks
+    public static void calculateAverageMarks(int[] marks) {
+        double totalMarks = 0;
+
+        for (int num: marks) {
+            totalMarks += num;
+        }
+
+        double averageMarks = totalMarks / marks.length;
+
+        System.out.println("Average marks: " + averageMarks);
+    }
+
+    public static void main(String[] args) {
+        int[] marks = {85, 90, 95, 91, 93};
+        calculateAverageMarks(marks);
+    }
+
 }
