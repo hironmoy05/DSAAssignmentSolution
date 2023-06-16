@@ -133,15 +133,25 @@ public static long calculateCombination(int n, int r) {
         return result;
     }
 
+    // Reverse a string
+    public static void reverseString(String str) {
+        String[] strArr = str.split("");
+        StringBuilder reverse = new StringBuilder();
 
+        for (int i = strArr.length - 1; i >= 0; i--)
+            reverse.append(strArr[i]);
+
+        System.out.println(reverse.toString());
+    }
+
+    public static void reverseString2(String str) {
+        StringBuilder sb = new StringBuilder(str);
+
+        sb.reverse();
+
+        System.out.println(sb.toString());
+    }
     public static void main(String[] args) {
-        int n = 5;
-        int r = 2;
-
-        long combination = calculateCombination(n, r);
-        System.out.println(combination); // Output: 10
-
-        long permutation = calculatePermutation(n, r);
-        System.out.println(permutation); // Output: 20
+        reverseString2("Hello");
     }
 }

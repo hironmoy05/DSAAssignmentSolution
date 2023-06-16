@@ -1,5 +1,7 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.Year;
+import java.time.YearMonth;
+import java.util.*;
 
 public class Conditionals {
 
@@ -334,9 +336,179 @@ public class Conditionals {
         System.out.println("Average marks: " + averageMarks);
     }
 
+//    Find if a number is palindrome or not
+    public static boolean isPalindrome(int n) {
+        if (n <= 1)
+            return true;
+
+        ArrayList<Integer> arr = new ArrayList<>();
+        while (n > 0) {
+            int lastDigit = n % 10;
+            arr.add(lastDigit);
+            n /= 10;
+        }
+
+        int s = 0;
+        int e = arr.size() - 1;
+
+        while(s <= e) {
+            if (!Objects.equals(arr.get(s), arr.get(e)))
+                return false;
+
+            s++;
+            e--;
+        }
+
+        return true;
+    }
+
+    // optimized code to find whether its palindrome or not. This is not gonna add extra space. But both of them have
+    // O(log10(n)) time complexity
+    public static boolean isPalindrome2(int n) {
+        if (n < 0)
+            return false;
+
+        int reverseNumber = 0;
+        int originalNumber = n;
+
+        while (n > 0) {
+            int lastDigit = n % 10;
+            reverseNumber = reverseNumber * 10 + lastDigit;
+            n /= 10;
+        }
+
+        return reverseNumber == originalNumber;
+    }
+
+//    HCF of two numbers by Euclidean Algorithm:
+public static int findHCF(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+//    Prime Factorization:
+//    The prime factorization method involves finding the prime factors of both numbers and then identifying the common factors.
+    public static int findHCF2(int a, int b) {
+        int smaller = Math.min(a, b);
+        int hcf = 1;
+
+        for (int i = 2; i <= smaller; i++) {
+            if (a % i == 0 && b % i == 0) {
+                hcf = i;
+            }
+        }
+
+        return hcf;
+    }
+
+    // Find LCM
+    public static int findLCM(int a, int b) {
+        int hcf = findHCF(a, b);
+
+        return (a * b) / hcf;
+    }
+
+    // Vowel or Constant
+    public static void vowelOrConsonant(char c) {
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+            System.out.println(c + " is a vowel");
+        else
+            System.out.println(c + " is a consonant");
+    }
+
+    // Find perfect Number
+    public static boolean perfectNumber(int num) {
+        int sum = 0;
+
+        for (int i = 1; i < num; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+
+        return num == sum;
+    }
+
+    // Check Leap year or not
+    public static void isLeapYear(int year) {
+        boolean divideBy4 = year % 4 == 0;
+        boolean divideBy400 = year % 400 == 0;
+        boolean divideBy100 = year % 100 != 0;
+
+        if (divideBy4 && (divideBy400 || divideBy100))
+            System.out.println(year + " is a leap year");
+        else
+            System.out.println(year + " is not a leap year");
+    }
+
+//    Kunal is allowed to go out with his friends only on the even days of a given month. Write a program to count the number of days he can go out in the month of August.August
+    public static void numberOfDaysAllowedToGo(int year, int month) {
+        YearMonth yearMonth = YearMonth.of(year, month);
+        int numberOfDaysInMonth = yearMonth.lengthOfMonth();
+        int count = 0;
+
+        for(int i = 1; i <= numberOfDaysInMonth; i++) {
+            if (i % 2 != 0)
+                count++;
+        }
+
+        System.out.println(count + " days he can go out in the month of " + yearMonth.getMonth());
+    }
+
+//    Write a program to print the sum of negative numbers, sum of positive even numbers and the sum of positive odd numbers from a list of numbers (N) entered by the user. The list terminates when the user enters a zero.
+    public static void sumOfNegNumPosEvenOddNum() {
+        Scanner scanner = new Scanner(System.in);
+
+        int sumOfNegativeNumbers = 0;
+        int sumOfEvenNumbers = 0;
+        int sumOfOddNumbers = 0;
+
+        while(true) {
+            int num = scanner.nextInt();
+
+            if (num == 0)
+                break;
+            else if (num < 0)
+                sumOfNegativeNumbers += num;
+            else if (num % 2 == 0)
+                sumOfEvenNumbers += num;
+            else sumOfOddNumbers += num;
+        }
+
+        System.out.println(
+                "Sum of Negative Numbers: " + sumOfNegativeNumbers+"\n" +
+                        "Sum of Even Numbers: " + sumOfEvenNumbers+"\n" +
+                        "Sum of Odd Numbers: " + sumOfOddNumbers
+        );
+    }
+
+//    public static int findCeiling(int[] arr, int target) {
+//        int start = 0;
+//        int end = arr.length - 1;
+//
+//        int mid = 0;
+//
+//        while (start <= end) {
+//            mid = start + (end - start) / 2;
+//
+//            if (target == arr[mid])
+//                return arr[mid];
+//
+//            if (target <= arr[mid])
+//                end = mid - 1;
+//            else
+//                start = mid + 1;
+//        }
+//
+//        return arr[start];
+//    }
+
     public static void main(String[] args) {
-        int[] marks = {85, 90, 95, 91, 93};
-        calculateAverageMarks(marks);
+        sumOfNegNumPosEvenOddNum();
     }
 
 }
